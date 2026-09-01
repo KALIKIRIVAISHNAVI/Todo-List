@@ -40,303 +40,93 @@ Upload to GitHub Pages for free hosting.
 #index.html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced To-Do List</title>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-    <link rel="stylesheet" href="style.css">
-</head>
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-<body>
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-    <div class="container">
-
-        <div class="top-bar">
-            <h1>Advanced To-Do List</h1>
-
-            <button id="themeBtn">🌙</button>
-        </div>
-
-        <div class="input-section">
-
-            <input 
-                type="text" 
-                id="taskInput" 
-                placeholder="Enter task"
-            >
-
-            <input 
-                type="date" 
-                id="dueDate"
-            >
-
-            <select id="priority">
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
-            </select>
-
-            <button id="addBtn">Add</button>
-
-        </div>
-
-        <div class="filter-section">
-
-            <button 
-                class="filter-btn" 
-                data-filter="all"
-            >
-                All
-            </button>
-
-            <button 
-                class="filter-btn" 
-                data-filter="completed"
-            >
-                Completed
-            </button>
-
-            <button 
-                class="filter-btn" 
-                data-filter="pending"
-            >
-                Pending
-            </button>
-
-        </div>
-
-        <ul id="taskList"></ul>
-
-    </div>
-
-    <!-- IMPORTANT -->
-    <script src="script.js"></script>
-
-</body>
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
 </html>
+
 ```
 ```
-#style.css
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+#app.css
+.App {
+  text-align: center;
 }
 
-body{
-    background: #0f172a;
-    color: white;
-    min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-    transition: 0.3s;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-.container{
-    background: #1e293b;
-    width: 100%;
-    max-width: 700px;
-
-    padding: 25px;
-    border-radius: 16px;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-.top-bar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 20px;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-#themeBtn{
-    background: #334155;
-    border: none;
-    color: white;
-
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
+.App-link {
+  color: #61dafb;
 }
 
-.input-section{
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr auto;
-
-    gap: 10px;
-    margin-bottom: 20px;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-input,
-select{
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-}
-
-#addBtn{
-    padding: 12px;
-    border: none;
-
-    background: #2563eb;
-    color: white;
-
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-#addBtn:hover{
-    background: #1d4ed8;
-}
-
-.filter-section{
-    display: flex;
-    gap: 10px;
-
-    margin-bottom: 20px;
-}
-
-.filter-btn{
-    padding: 10px 15px;
-
-    border: none;
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    background: #334155;
-    color: white;
-}
-
-ul{
-    list-style: none;
-}
-
-li{
-    background: #334155;
-
-    padding: 15px;
-    border-radius: 10px;
-
-    margin-bottom: 12px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.task-info{
-    flex: 1;
-}
-
-.completed{
-    text-decoration: line-through;
-    opacity: 0.6;
-}
-
-.priority{
-    margin-top: 5px;
-    font-size: 14px;
-}
-
-.high{
-    color: red;
-}
-
-.medium{
-    color: orange;
-}
-
-.low{
-    color: lightgreen;
-}
-
-.task-buttons{
-    display: flex;
-    gap: 8px;
-}
-
-.task-buttons button{
-    border: none;
-
-    padding: 8px 12px;
-    border-radius: 6px;
-
-    cursor: pointer;
-}
-
-.complete-btn{
-    background: green;
-    color: white;
-}
-
-.edit-btn{
-    background: orange;
-    color: white;
-}
-
-.delete-btn{
-    background: crimson;
-    color: white;
-}
-
-/* Light Mode */
-
-.light-mode{
-    background: #f1f5f9;
-    color: black;
-}
-
-.light-mode .container{
-    background: white;
-}
-
-.light-mode li{
-    background: #e2e8f0;
-}
-
-.light-mode .filter-btn,
-.light-mode #themeBtn{
-    background: #cbd5e1;
-    color: black;
-}
-
-/* Responsive */
-
-@media(max-width: 700px){
-
-    .input-section{
-        grid-template-columns: 1fr;
-    }
-
-    li{
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .task-buttons{
-        width: 100%;
-    }
-
-    .task-buttons button{
-        flex: 1;
-    }
-}
 ```
 ## OUTPUT
-<img width="1049" height="568" alt="image" src="https://github.com/user-attachments/assets/59718820-1fae-4c37-81f6-ab17fd750b93" />
-
-<img width="1045" height="590" alt="image" src="https://github.com/user-attachments/assets/56e47f46-084d-442b-8276-d78d8768f545" />
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/549e7ede-0c49-4862-970b-16a6565f55fb" />vs
 
 ## RESULT
 The program for creating To-do list using JavaScript is executed successfully.
